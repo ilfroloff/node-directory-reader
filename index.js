@@ -1,10 +1,11 @@
 var diread = function(options) {
     var dir_path = options.src,
-        mask = typeof options.mask === 'function'? options.mask : function() { return true; };
+        mask = typeof options.mask === 'function'? options.mask : function() { return true; },
+        execute_dir = process.cwd();
 
     var fs = require('fs'),
         path = require('path'),
-        full_dir_path = path.join(__dirname, dir_path),
+        full_dir_path = path.join(execute_dir, dir_path),
         list_of_file_path = [],
 
         read_directory = function(dir_path) {
