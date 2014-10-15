@@ -10,7 +10,7 @@ var diread = function(options) {
 
         read_by_path = function(dir_path, file_name) {
             var file_path = path.join(dir_path, file_name),
-                is_directory = fs.lstatSync(file_path).isDirectory();
+                is_directory = fs.statSync(file_path).isDirectory();
 
             if(is_directory) {
                 read_directory(file_path);
@@ -26,7 +26,10 @@ var diread = function(options) {
             });
         };
 
-    read_by_path(full_dir_path, '');
+    try {
+        read_by_path(full_dir_path, '');
+    } catch(err) {
+    }
 
     return {
         list: function(callback) {
