@@ -60,4 +60,18 @@ describe('Check reading folder files', function() {
             assert.equal(3, list.length);
         });
     });
+
+    it('should not check self directory', function() {
+        var initial_folder = Path.resolve(process.cwd(), 'test/folder');
+
+        Diread({
+            src: initial_folder,
+            directories: true,
+            ignoreError: false,
+            mask: function(path) {
+                assert.notEqual(initial_folder, path);
+                return true;
+            }
+        });
+    });
 });

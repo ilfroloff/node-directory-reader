@@ -25,6 +25,7 @@ function Diread(options) {
  * @param {Boolean}  [options.directories=false]
  * @param {Number}   [options.level]
  * @param {Function} [options.mask]
+ * @param {Boolean} [options.ignoreError=true]
  */
 Diread.prototype.initialize = function(options) {
     this._directory_path = Path.resolve(process.cwd(), options.src);
@@ -33,13 +34,19 @@ Diread.prototype.initialize = function(options) {
     this._mask = typeof options.mask === 'function'?
         options.mask :
         function() { return true; };
+    this._ignore_error = options.ignoreError === void 0?
+        true :
+        options.ignoreError;
 
     this._current_read_level = 0;
     this._list_of_file_path = [];
 
-    try {
+    if(this._ignore_error) {
+        try {
+            this._read_by_path(this._directory_path, '');
+        } catch(err) {}
+    } else {
         this._read_by_path(this._directory_path, '');
-    } catch(err) {
     }
 };
 
@@ -82,14 +89,12 @@ Diread.prototype._read_by_path = function(directory_path, filename) {
     var is_directory = FS.statSync(path).isDirectory();
 
     if(is_directory) {
-        if(this._check_directories) {
+        if(this._check_directories && path !== this._directory_path) {
             if(!this._mask(path)) {
                 return;
             }
 
-            if(path !== this._directory_path) {
-                this._list_of_file_path.push(path);
-            }
+            this._list_of_file_path.push(path);
         }
 
         this._current_read_level++;
