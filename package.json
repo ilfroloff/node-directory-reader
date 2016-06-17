@@ -1,26 +1,26 @@
 {
-  "name": "diread",
-  "version": "0.0.2",
-  "description": "Module for reading all files in directory",
-  "main": "index.js",
-  "scripts": {
-    "test": "./node_modules/.bin/mocha"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/ilfroloff/node-directory-reader.git"
-  },
-  "keywords": [
-    "directory",
-    "file"
-  ],
-  "author": "ilfroloff <ilfroloff@gmail.com> (http://github.com/ilfroloff)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ilfroloff/node-directory-reader/issues"
-  },
-  "homepage": "https://github.com/ilfroloff/node-directory-reader",
-  "devDependencies": {
-    "mocha": "^1.21.4"
-  }
+    "name": "diread",
+    "version": "0.1.0",
+    "description": "Module for reading all files in directory",
+    "main": "index.js",
+    "scripts": {
+        "test": "./node_modules/.bin/mocha"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/ilfroloff/node-directory-reader.git"
+    },
+    "keywords": [
+        "directory",
+        "file"
+    ],
+    "author": "ilfroloff <ilfroloff@gmail.com> (http://github.com/ilfroloff)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ilfroloff/node-directory-reader/issues"
+    },
+    "homepage": "https://github.com/ilfroloff/node-directory-reader",
+    "devDependencies": {
+        "mocha": "^1.21.4"
+    }
 }
